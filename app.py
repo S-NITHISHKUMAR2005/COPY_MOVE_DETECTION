@@ -38,13 +38,11 @@ def visualize_matches(img1_gray, img2_gray, good_matches, kp1, kp2):
     matches = [[match] for match in good_matches]
     img_match = cv2.drawMatchesKnn(img1_gray, kp1, img2_gray, kp2, matches, None, flags=2)
 
-    # Convert to RGB for matplotlib
     img_rgb = cv2.cvtColor(img_match, cv2.COLOR_BGR2RGB)
     plt.figure(figsize=(12, 8))
     plt.imshow(img_rgb)
     plt.axis("off")
 
-    # Save to BytesIO buffer
     buffer = BytesIO()
     plt.savefig(buffer, format='png')
     plt.close()
@@ -79,8 +77,3 @@ def index():
             return render_template('index.html', error=str(e))
 
     return render_template('index.html')
-# if __name__ == '__main__':
-#     app.run(debug=True)
-if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))  # use PORT from Render
-    app.run(host='0.0.0.0', port=port)

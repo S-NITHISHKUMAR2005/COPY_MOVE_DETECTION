@@ -1,4 +1,5 @@
-flask
-opencv-python
+Flask
+gunicorn
+opencv-python-headless
 matplotlib
 numpy
